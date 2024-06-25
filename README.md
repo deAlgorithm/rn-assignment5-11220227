@@ -26,8 +26,8 @@ This application is built using React Native with Expo, showcasing a settings sc
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/your-repo/react-native-settings-app.git
-    cd react-native-settings-app
+    git clone https://github.com/deAlgorithm/rn-assignment5-11220227
+    cd theme
     ```
 
 2. **Install dependencies:**
