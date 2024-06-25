@@ -1,4 +1,3 @@
-// screens/SettingsScreen.js
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import Setting from '../component/settingsscreen';
@@ -64,5 +63,4 @@ const styles = StyleSheet.create({
     },
     greaterthan:{
         fontSize:25,
-    }
-});
+    }});
