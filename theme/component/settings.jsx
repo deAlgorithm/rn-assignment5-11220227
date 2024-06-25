@@ -1,43 +1,68 @@
-import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet, Switch } from 'react-native';
-import { EventRegister } from 'react-native-event-listeners';
+// screens/SettingsScreen.js
+import React, { useContext } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import Setting from '../component/settingsscreen';
 import themeContext from '../context/themeContext';
-
-const Settings = () => {
-    const theme = useContext(themeContext);
-    const [darkMode, setDarkMode] = useState(false);
-
+export default function Settings() {
+    const theme = useContext(themeContext)
     return (
-        <View style={[styles.themecontainer, { backgroundColor: theme.background }, { color: theme.color }]}>
-            <Text style={[styles.theme, { color: theme.color }]}>Theme</Text>
-            <Switch
-                value={darkMode}
-                style={[styles.switch, { transform: [{ scaleX: 1.5 }, { scaleY: 1.5 }] }]}
-                trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={darkMode ? "#f5dd4b" : "#f4f3f4"}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={(value) => {
-                    setDarkMode(value);
-                    EventRegister.emit('ChangeTheme', value);
-                }}
-            />
+    <SafeAreaView style={styles.container}>
+        <View style={styles.Settings}>
+            <Text style={[styles.Head,{color : theme.color}]}>Settings</Text>
         </View>
-    );
-};
+      <TouchableOpacity style={styles.option} >
+        <Text style={[styles.optionText,{color : theme.color}]}>Language</Text>
+            <Text style={[styles.greaterthan,{color : theme.color}]}>{'>'}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.option} >
+        <Text style={[styles.optionText,{color : theme.color}]}>My Profile</Text>
+        <Text style={[styles.greaterthan,{color : theme.color}]}>{'>'}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.option} >
+        <Text style={[styles.optionText,{color : theme.color}]}>Contact Us</Text>
+        <Text style={[styles.greaterthan,{color : theme.color}]}>{'>'}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.option} >
+        <Text style={[styles.optionText,{color : theme.color}]}>Change Password</Text>
+        <Text style={[styles.greaterthan,{color : theme.color}]}>{'>'}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.option} >
+        <Text style={[styles.optionText,{color : theme.color}]}>Privacy Policy</Text>
+        <Text style={[styles.greaterthan,{color : theme.color}]}>{'>'}</Text>
+      </TouchableOpacity>
+      <Setting />
+    </SafeAreaView>
+  );
+}
 
 const styles = StyleSheet.create({
-    themecontainer: {
+    container: {
         flex: 1,
+        padding: 20,
+        marginTop: 40,
+        
+    },
+    Head:{
+        fontSize: 26,
+    },
+    Settings: {
+       
+        marginBottom: 80,
         alignItems: 'center',
+        justifyContent: 'center', 
+    },
+    option: {
+        flexDirection: 'row',
         justifyContent: 'space-between',
-        padding:20,
-        flexDirection : 'row'
+        paddingVertical: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
     },
-    theme: {
-        fontSize: 24,
-        marginBottom: 20,
+    optionText: {
+        fontSize: 20,
+        marginBottom : -8,
     },
-    
+    greaterthan:{
+        fontSize:25,
+    }
 });
-
-export default Settings;
